@@ -32,11 +32,18 @@
             <h1 class="title">Kahlys</h1>
             <p class="subtitle"><strong>Golang Developer</strong> <em>& cryptographer</em></p>
           </div>
+          <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-        <div class="navbar-end">
-          <a class="navbar-item" href="index.html">About</a>
-          <a class="navbar-item" href="project.html">Projects</a>
-          <a class="navbar-item" href="resume.html" target="_blank"> Resume</a>
+        <div class="navbar-menu" id="navMenu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="index.html">About</a>
+            <a class="navbar-item" href="project.html">Projects</a>
+            <a class="navbar-item" href="resume.html" target="_blank"> Resume</a>
+          </div>
         </div>
       </div>
     </nav>
@@ -95,6 +102,23 @@
     </div>
 
     <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"), 0);
+
+        if ($navbarBurgers.length > 0) {
+          $navbarBurgers.forEach((el) => {
+            el.addEventListener("click", () => {
+              const target = el.dataset.target;
+              const $target = document.getElementById(target);
+              el.classList.toggle("is-active");
+              $target.classList.toggle("is-active");
+            });
+          });
+        }
+      });
+    </script>
+
+    <script>
       var app = new Vue({
         el: "#app",
         data: {
@@ -125,6 +149,7 @@
           },
         },
       });
-    </script>
+    </script
+
   </body>
 </html>
