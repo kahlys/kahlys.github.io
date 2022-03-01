@@ -55,19 +55,9 @@
           <p><em>Some music I have composed...</em></p>
 
           <div class="columns is-multiline mt-1">
-            <div class="column is-one-third">
+            <div v-for="m in music" class="column is-one-third">
               <figure class="image is-16by9">
-                <iframe class="has-ratio" width="100%" height="auto" src="https://youtube.com/embed/LEbtlhpPrKc" allowfullscreen></iframe>
-              </figure>
-            </div>
-            <div class="column is-one-third">
-              <figure class="image is-16by9">
-                <iframe class="has-ratio" width="100%" height="auto" src="https://youtube.com/embed/V0cKVlCKARU" allowfullscreen></iframe>
-              </figure>
-            </div>
-            <div class="column is-one-third">
-              <figure class="image is-16by9">
-                <iframe class="has-ratio" width="100%" height="auto" src="https://youtube.com/embed/k3vKDIJkVi8" allowfullscreen></iframe>
+                <iframe class="has-ratio" width="100%" height="auto" v-bind:src="m.src" allowfullscreen></iframe>
               </figure>
             </div>
           </div>
@@ -108,6 +98,11 @@
       var app = new Vue({
         el: "#app",
         data: {
+          music: [
+            { src: "https://youtube.com/embed/LEbtlhpPrKc" },
+            { src: "https://youtube.com/embed/V0cKVlCKARU" },
+            { src: "https://youtube.com/embed/k3vKDIJkVi8" },
+          ],
           reco: {
             music: [
               { img: "/static/img/album_good.webp", link: "https://songwhip.com/rodolphe-burger/good-alive" },
