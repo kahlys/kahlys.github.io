@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
     <style>
       img {
         transition: filter 0.5s ease-in-out;
@@ -39,101 +41,104 @@
       </div>
     </nav>
 
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Bio</h1>
-      </div>
-    </section>
+    <div id="app">
+      <section class="section">
+        <div class="container">
+          <h1 class="title">Bio</h1>
+        </div>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Music</h1>
+      <section class="section">
+        <div class="container">
+          <h1 class="title">Music</h1>
 
-        <p><em>Some music I have composed...</em></p>
+          <p><em>Some music I have composed...</em></p>
 
-        <div class="columns is-multiline mt-1">
-          <div class="column is-one-third">
-            <figure class="image is-16by9">
-              <iframe class="has-ratio" width="100%" height="auto" src="https://youtube.com/embed/LEbtlhpPrKc" allowfullscreen></iframe>
-            </figure>
-          </div>
-          <div class="column is-one-third">
-            <figure class="image is-16by9">
-              <iframe class="has-ratio" width="100%" height="auto" src="https://youtube.com/embed/V0cKVlCKARU" allowfullscreen></iframe>
-            </figure>
-          </div>
-          <div class="column is-one-third">
-            <figure class="image is-16by9">
-              <iframe class="has-ratio" width="100%" height="auto" src="https://youtube.com/embed/k3vKDIJkVi8" allowfullscreen></iframe>
-            </figure>
+          <div class="columns is-multiline mt-1">
+            <div class="column is-one-third">
+              <figure class="image is-16by9">
+                <iframe class="has-ratio" width="100%" height="auto" src="https://youtube.com/embed/LEbtlhpPrKc" allowfullscreen></iframe>
+              </figure>
+            </div>
+            <div class="column is-one-third">
+              <figure class="image is-16by9">
+                <iframe class="has-ratio" width="100%" height="auto" src="https://youtube.com/embed/V0cKVlCKARU" allowfullscreen></iframe>
+              </figure>
+            </div>
+            <div class="column is-one-third">
+              <figure class="image is-16by9">
+                <iframe class="has-ratio" width="100%" height="auto" src="https://youtube.com/embed/k3vKDIJkVi8" allowfullscreen></iframe>
+              </figure>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Recommendations</h1>
+      <section class="section">
+        <div class="container">
+          <h1 class="title">Recommendations</h1>
 
-        <h2 class="is-size-4">My favorite music albums</h2>
+          <h2 class="is-size-4">My favorite music albums</h2>
 
-        <div class="columns is-multiline mt-1">
-          <div class="column is-one-quarter">
-            <a href="https://songwhip.com/rodolphe-burger/good-alive" target="_blank">
-              <img src="/static/img/album_good.webp" alt="" />
-            </a>
+          <div class="columns is-multiline mt-1">
+            <div v-for="album in reco.music" class="column is-one-quarter">
+              <a v-bind:href="album.link" target="_blank">
+                <img v-bind:src="album.img" alt="" />
+              </a>
+            </div>
           </div>
-          <div class="column is-one-quarter">
-            <a href="https://songwhip.com/coeur-de-pirate/en-cas-de-tempete-ce-jardin-sera-ferme" target="_blank">
-              <img src="/static/img/album_tempete.webp" alt="" />
-            </a>
+
+          <h2 class="is-size-4">My favorite movies</h2>
+
+          <div class="columns is-multiline mt-1">
+            <div class="column is-one-quarter">
+              <a href="https://www.themoviedb.org/movie/414906-the-batman" target="_blank"> <img src="/static/img/movie_batman.jpeg" alt="" /></a>
+            </div>
+            <div class="column is-one-quarter">
+              <a href="https://www.themoviedb.org/movie/496243" target="_blank"> <img src="/static/img/movie_parasite.jpeg" alt="" /></a>
+            </div>
+            <div class="column is-one-quarter">
+              <a href="https://www.themoviedb.org/movie/68730-silence" target="_blank"> <img src="/static/img/movie_silence.jpeg" alt="" /></a>
+            </div>
+            <div class="column is-one-quarter">
+              <a href="https://www.themoviedb.org/movie/13223-gran-torino" target="_blank"> <img src="/static/img/movie_torino.jpeg" alt="" /></a>
+            </div>
           </div>
-          <div class="column is-one-quarter">
-            <a href="https://songwhip.com/daft-punk/random-access-memories" target="_blank">
-              <img src="/static/img/album_ram.webp" alt="" />
-            </a>
-          </div>
-          <div class="column is-one-quarter">
-            <a href="https://songwhip.com/stupeflip/stup-virus-2017" target="_blank">
-              <img src="/static/img/album_stup.webp" alt="" />
-            </a>
+
+          <h2 class="is-size-4">My favorite tv shows</h2>
+
+          <div class="columns is-multiline mt-1">
+            <div class="column is-one-quarter">
+              <a href="https://www.themoviedb.org/tv/63247-westworld" target="_blank"> <img src="/static/img/tv_westworld.jpeg" alt="" /></a>
+            </div>
+            <div class="column is-one-quarter">
+              <a href="https://www.themoviedb.org/tv/62476-le-bureau-des-l-gendes" target="_blank"> <img src="/static/img/tv_lbdl.jpeg" alt="" /></a>
+            </div>
+            <div class="column is-one-quarter">
+              <a href="https://www.themoviedb.org/tv/19885-sherlock" target="_blank"> <img src="/static/img/tv_sherlock.jpeg" alt="" /></a>
+            </div>
+            <div class="column is-one-quarter">
+              <a href="https://www.themoviedb.org/tv/894-the-prisoner" target="_blank"> <img src="/static/img/tv_prisonnier.jpeg" alt="" /></a>
+            </div>
           </div>
         </div>
+      </section>
+    </div>
 
-        <h2 class="is-size-4">My favorite movies</h2>
-
-        <div class="columns is-multiline mt-1">
-          <div class="column is-one-quarter">
-            <a href="https://www.themoviedb.org/movie/414906-the-batman" target="_blank"> <img src="/static/img/movie_batman.jpeg" alt="" /></a>
-          </div>
-          <div class="column is-one-quarter">
-            <a href="https://www.themoviedb.org/movie/496243" target="_blank"> <img src="/static/img/movie_parasite.jpeg" alt="" /></a>
-          </div>
-          <div class="column is-one-quarter">
-            <a href="https://www.themoviedb.org/movie/68730-silence" target="_blank"> <img src="/static/img/movie_silence.jpeg" alt="" /></a>
-          </div>
-          <div class="column is-one-quarter">
-            <a href="https://www.themoviedb.org/movie/13223-gran-torino" target="_blank"> <img src="/static/img/movie_torino.jpeg" alt="" /></a>
-          </div>
-        </div>
-
-        <h2 class="is-size-4">My favorite tv shows</h2>
-
-        <div class="columns is-multiline mt-1">
-          <div class="column is-one-quarter">
-            <a href="https://www.themoviedb.org/tv/63247-westworld" target="_blank"> <img src="/static/img/tv_westworld.jpeg" alt="" /></a>
-          </div>
-          <div class="column is-one-quarter">
-            <a href="https://www.themoviedb.org/tv/62476-le-bureau-des-l-gendes" target="_blank"> <img src="/static/img/tv_lbdl.jpeg" alt="" /></a>
-          </div>
-          <div class="column is-one-quarter">
-            <a href="https://www.themoviedb.org/tv/19885-sherlock" target="_blank"> <img src="/static/img/tv_sherlock.jpeg" alt="" /></a>
-          </div>
-          <div class="column is-one-quarter">
-            <a href="https://www.themoviedb.org/tv/894-the-prisoner" target="_blank"> <img src="/static/img/tv_prisonnier.jpeg" alt="" /></a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          reco: {
+            music: [
+              { img: "/static/img/album_good.webp", link: "https://songwhip.com/rodolphe-burger/good-alive" },
+              { img: "/static/img/album_tempete.webp", link: "https://songwhip.com/coeur-de-pirate/en-cas-de-tempete-ce-jardin-sera-ferme" },
+              { img: "/static/img/album_ram.webp", link: "https://songwhip.com/daft-punk/random-access-memories" },
+              { img: "/static/img/album_stup.webp", link: "https://songwhip.com/stupeflip/stup-virus-2017" },
+            ],
+          },
+        },
+      });
+    </script>
   </body>
 </html>
