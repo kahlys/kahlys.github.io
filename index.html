@@ -11,13 +11,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
 
     <style>
-      img {
-        transition: filter 0.5s ease-in-out;
+      .img-link {
+        transition: filter 0.3s ease-in-out;
         -webkit-filter: grayscale(0%);
         filter: grayscale(0%);
       }
 
-      img:hover {
+      .img-link:hover {
         -webkit-filter: grayscale(100%) brightness(70%);
         filter: grayscale(100%) brightness(70%);
       }
@@ -79,7 +79,7 @@
           <div class="columns is-multiline mt-1">
             <div v-for="album in reco.music" class="column is-one-quarter">
               <a v-bind:href="album.link" target="_blank">
-                <img v-bind:src="album.img" alt="" />
+                <img class="img-link" v-bind:src="album.img" alt="" />
               </a>
             </div>
           </div>
@@ -87,14 +87,14 @@
           <h2 class="is-size-4">My favorite movies</h2>
           <div class="columns is-multiline mt-1">
             <div v-for="movie in reco.movie" class="column is-one-quarter">
-              <a v-bind:href="movie.link" target="_blank"> <img v-bind:src="movie.img" alt="" /></a>
+              <a v-bind:href="movie.link" target="_blank"> <img class="img-link" v-bind:src="movie.img" alt="" /></a>
             </div>
           </div>
 
           <h2 class="is-size-4">My favorite tv shows</h2>
           <div class="columns is-multiline mt-1">
             <div v-for="show in reco.tv" class="column is-one-quarter">
-              <a v-bind:href="show.link" target="_blank"> <img v-bind:src="show.img" alt="" /></a>
+              <a v-bind:href="show.link" target="_blank"> <img class="img-link" v-bind:src="show.img" alt="" /></a>
             </div>
           </div>
         </div>
