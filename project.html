@@ -51,6 +51,27 @@
       <section class="section">
         <div class="container">
           <h1 class="title">Personal</h1>
+
+          <div class="columns">
+            <div v-for="p in projects.perso" class="column is-one-quarter">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image"><img v-bind:src="p.image" alt="Placeholder image" /></figure>
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    <b>{{p.title}}</b> · <em class="has-text-grey">{{p.post}}</em><br />
+                    {{p.desc}}
+                  </div>
+                </div>
+                <nav class="breadcrumb is-centered pb-2" aria-label="breadcrumbs">
+                  <ul>
+                    <li v-for="l in p.links"><a v-bind:href="l.ref" target="_blank">{{l.name}}</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -104,6 +125,18 @@
         el: "#app",
         data: {
           projects: {
+            perso: [
+              {
+                title: "squizz",
+                post: "with a team",
+                desc: "online multiplayer quiz about general culture",
+                image: "static/img/squizz.webp",
+                links: [
+                  { name: "Website", ref: "https://squiz.gg/" },
+                  { name: "Github", ref: "https://github.com/sQuiz-2" },
+                ],
+              },
+            ],
             pro: [
               {
                 post: "Golang developer & Cryptographer",
