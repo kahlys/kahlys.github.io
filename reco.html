@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Kahlys</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+  <style>
+    .img-link {
+      transition: filter 0.3s ease-in-out;
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
+    }
+
+    .img-link:hover {
+      -webkit-filter: grayscale(100%) brightness(70%);
+      filter: grayscale(100%) brightness(70%);
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar is-light pt-2 pb-2" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <div>
+          <h1 class="title">Kahlys</h1>
+          <p class="subtitle">
+            <strong>Golang Developer</strong> <em>& cryptographer</em>
+          </p>
+        </div>
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end">
+          <a class="navbar-item" href="index.html">About</a>
+          <a class="navbar-item" href="reco.html">Recommendations</a>
+          <a class="navbar-item" href="resume.html" target="_blank">
+            Resume</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="app">
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Recommendations</h1>
+
+        <h2 class="is-size-4">My favorite music albums</h2>
+        <div class="columns is-multiline mt-1">
+          <div v-for="album in reco.music" class="column is-one-quarter">
+            <a v-bind:href="album.link" target="_blank">
+              <img class="img-link" v-bind:src="album.img" alt="" />
+            </a>
+          </div>
+        </div>
+
+        <h2 class="is-size-4">My favorite movies</h2>
+        <div class="columns is-multiline mt-1">
+          <div v-for="movie in reco.movie" class="column is-one-quarter">
+            <a v-bind:href="movie.link" target="_blank"> <img class="img-link" v-bind:src="movie.img" alt="" /></a>
+          </div>
+        </div>
+
+        <h2 class="is-size-4">My favorite tv shows</h2>
+        <div class="columns is-multiline mt-1">
+          <div v-for="show in reco.tv" class="column is-one-quarter">
+            <a v-bind:href="show.link" target="_blank"> <img class="img-link" v-bind:src="show.img" alt="" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"), 0);
+
+      if ($navbarBurgers.length > 0) {
+        $navbarBurgers.forEach((el) => {
+          el.addEventListener("click", () => {
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+            el.classList.toggle("is-active");
+            $target.classList.toggle("is-active");
+          });
+        });
+      }
+    });
+  </script>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        reco: {
+          music: [
+            { img: "/static/img/album_good.webp", link: "https://songwhip.com/rodolphe-burger/good-alive" },
+            { img: "/static/img/album_tempete.webp", link: "https://songwhip.com/coeur-de-pirate/en-cas-de-tempete-ce-jardin-sera-ferme" },
+            { img: "/static/img/album_ram.webp", link: "https://songwhip.com/daft-punk/random-access-memories" },
+            { img: "/static/img/album_stup.webp", link: "https://songwhip.com/stupeflip/stup-virus-2017" },
+          ],
+          movie: [
+            { img: "/static/img/movie_dune.jpg", link: "https://www.themoviedb.org/movie/693134-dune-part-two" },
+            { img: "/static/img/movie_batman.jpeg", link: "https://www.themoviedb.org/movie/414906-the-batman" },
+            { img: "/static/img/movie_parasite.jpeg", link: "https://www.themoviedb.org/movie/496243" },
+            { img: "/static/img/movie_torino.jpeg", link: "https://www.themoviedb.org/movie/13223-gran-torino" },
+          ],
+          tv: [
+            { img: "/static/img/tv_wandavision.jpg", link: "https://www.themoviedb.org/tv/85271-wandavision" },
+            { img: "/static/img/tv_westworld.jpeg", link: "https://www.themoviedb.org/tv/63247-westworld" },
+            { img: "/static/img/tv_lbdl.jpeg", link: "https://www.themoviedb.org/tv/62476-le-bureau-des-l-gendes" },
+            { img: "/static/img/tv_prisonnier.jpeg", link: "https://www.themoviedb.org/tv/894-the-prisoner" },
+          ],
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>

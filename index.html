@@ -13,15 +13,14 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
 
   <style>
-    .img-link {
-      transition: filter 0.3s ease-in-out;
-      -webkit-filter: grayscale(0%);
-      filter: grayscale(0%);
+    .card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
-    .img-link:hover {
-      -webkit-filter: grayscale(100%) brightness(70%);
-      filter: grayscale(100%) brightness(70%);
+    .card-content {
+      height: 100%;
     }
   </style>
 </head>
@@ -43,7 +42,7 @@
       <div class="navbar-menu" id="navMenu">
         <div class="navbar-end">
           <a class="navbar-item" href="index.html">About</a>
-          <a class="navbar-item" href="project.html">Projects</a>
+          <a class="navbar-item" href="reco.html">Recommendations</a>
           <a class="navbar-item" href="resume.html" target="_blank"> Resume</a>
         </div>
       </div>
@@ -64,7 +63,7 @@
               Cryptology at Université de
               Paris. Since my first professional experience, I have been in love with the Go langage, but I am also
               interested in cryptology and
-              data science. In my spare time I like writing orchestral cinematic music.
+              data science. In my spare time I like writing cinematic music.
             </p>
             <br />
             <div class="buttons">
@@ -94,7 +93,52 @@
 
     <section class="section">
       <div class="container">
-        <h1 class="title">Music</h1>
+        <h1 class="title">Projects</h1>
+
+        <div class="columns">
+          <div v-for="p in projects.pro" class="column is-one-quarter">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image"><img v-bind:src="p.image" alt="Placeholder image" /></figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <p><b>{{p.post}}</b></p>
+                  <p>{{p.desc}}</p>
+                </div>
+              </div>
+              <nav class="breadcrumb is-centered pb-2" aria-label="breadcrumbs">
+                <ul>
+                  <li v-for="l in p.links"><a v-bind:href="l.ref" target="_blank">{{l.name}}</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div v-for="p in projects.perso" class="column is-one-quarter">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image"><img v-bind:src="p.image" alt="Placeholder image" /></figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <b>{{p.title}}</b> · <em class="has-text-grey">{{p.post}}</em><br />
+                  {{p.desc}}
+                </div>
+              </div>
+              <nav class="breadcrumb is-centered pb-2" aria-label="breadcrumbs">
+                <ul>
+                  <li v-for="l in p.links"><a v-bind:href="l.ref" target="_blank">{{l.name}}</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Music composer</h1>
 
         <p><em>Some music I have composed...</em></p>
 
@@ -103,35 +147,6 @@
             <figure class="image is-16by9">
               <iframe class="has-ratio" width="100%" height="auto" v-bind:src="m.src" allowfullscreen></iframe>
             </figure>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Recommendations</h1>
-
-        <h2 class="is-size-4">My favorite music albums</h2>
-        <div class="columns is-multiline mt-1">
-          <div v-for="album in reco.music" class="column is-one-quarter">
-            <a v-bind:href="album.link" target="_blank">
-              <img class="img-link" v-bind:src="album.img" alt="" />
-            </a>
-          </div>
-        </div>
-
-        <h2 class="is-size-4">My favorite movies</h2>
-        <div class="columns is-multiline mt-1">
-          <div v-for="movie in reco.movie" class="column is-one-quarter">
-            <a v-bind:href="movie.link" target="_blank"> <img class="img-link" v-bind:src="movie.img" alt="" /></a>
-          </div>
-        </div>
-
-        <h2 class="is-size-4">My favorite tv shows</h2>
-        <div class="columns is-multiline mt-1">
-          <div v-for="show in reco.tv" class="column is-one-quarter">
-            <a v-bind:href="show.link" target="_blank"> <img class="img-link" v-bind:src="show.img" alt="" /></a>
           </div>
         </div>
       </div>
@@ -164,24 +179,45 @@
           { src: "https://youtube.com/embed/V0cKVlCKARU" },
           { src: "https://youtube.com/embed/k3vKDIJkVi8" },
         ],
-        reco: {
-          music: [
-            { img: "/static/img/album_good.webp", link: "https://songwhip.com/rodolphe-burger/good-alive" },
-            { img: "/static/img/album_tempete.webp", link: "https://songwhip.com/coeur-de-pirate/en-cas-de-tempete-ce-jardin-sera-ferme" },
-            { img: "/static/img/album_ram.webp", link: "https://songwhip.com/daft-punk/random-access-memories" },
-            { img: "/static/img/album_stup.webp", link: "https://songwhip.com/stupeflip/stup-virus-2017" },
+        projects: {
+          perso: [
+            {
+              title: "battools",
+              post: "personal",
+              desc: "A collection of personal tools and libraries",
+              image: "static/img/baywatch.webp",
+              links: [{ name: "Github", ref: "https://github.com/kahlys/baywatch" }],
+            },
+            {
+              title: "squizz",
+              post: "with a team",
+              desc: "online multiplayer quiz about general culture",
+              image: "static/img/squizz.webp",
+              links: [
+                { name: "Website", ref: "https://squiz.gg/" },
+                { name: "Github", ref: "https://github.com/sQuiz-2" },
+              ],
+            },
           ],
-          movie: [
-            { img: "/static/img/movie_batman.jpeg", link: "https://www.themoviedb.org/movie/414906-the-batman" },
-            { img: "/static/img/movie_parasite.jpeg", link: "https://www.themoviedb.org/movie/496243" },
-            { img: "/static/img/movie_silence.jpeg", link: "https://www.themoviedb.org/movie/68730-silence" },
-            { img: "/static/img/movie_torino.jpeg", link: "https://www.themoviedb.org/movie/13223-gran-torino" },
-          ],
-          tv: [
-            { img: "/static/img/tv_westworld.jpeg", link: "https://www.themoviedb.org/tv/63247-westworld" },
-            { img: "/static/img/tv_lbdl.jpeg", link: "https://www.themoviedb.org/tv/62476-le-bureau-des-l-gendes" },
-            { img: "/static/img/tv_sherlock.jpeg", link: "https://www.themoviedb.org/tv/19885-sherlock" },
-            { img: "/static/img/tv_prisonnier.jpeg", link: "https://www.themoviedb.org/tv/894-the-prisoner" },
+          pro: [
+            {
+              post: "Golang developer & Cryptographer",
+              desc: "secure end-to-end mobile communications on consumer devices",
+              image: "static/img/cryptosmart.webp",
+              links: [
+                { name: "Website", ref: "https://www.ercom.com/" },
+                { name: "Video", ref: "https://www.youtube.com/watch?v=3vLFcElgAqU" },
+              ],
+            },
+            {
+              post: "Cryptographer internship",
+              desc: "secure file sharing and collaboraive work in the cloud",
+              image: "static/img/cryptobox.webp",
+              links: [
+                { name: "Website", ref: "https://www.ercom.com/" },
+                { name: "Video", ref: "https://www.youtube.com/watch?v=x_bZOwlZcyg" },
+              ],
+            },
           ],
         },
       },
