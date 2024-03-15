@@ -1,188 +1,192 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Kahlys</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <title>Kahlys</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
-    <style>
-      .img-link {
-        transition: filter 0.3s ease-in-out;
-        -webkit-filter: grayscale(0%);
-        filter: grayscale(0%);
-      }
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
 
-      .img-link:hover {
-        -webkit-filter: grayscale(100%) brightness(70%);
-        filter: grayscale(100%) brightness(70%);
-      }
-    </style>
-  </head>
+  <style>
+    .img-link {
+      transition: filter 0.3s ease-in-out;
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
+    }
 
-  <body>
-    <nav class="navbar is-light pt-2 pb-2" role="navigation" aria-label="main navigation">
-      <div class="container">
-        <div class="navbar-brand">
-          <div>
-            <h1 class="title">Kahlys</h1>
-            <p class="subtitle"><strong>Golang Developer</strong> <em>& cryptographer</em></p>
-          </div>
-          <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
+    .img-link:hover {
+      -webkit-filter: grayscale(100%) brightness(70%);
+      filter: grayscale(100%) brightness(70%);
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar is-light pt-2 pb-2" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <div>
+          <h1 class="title">Kahlys</h1>
+          <p class="subtitle"><strong>Golang Developer</strong> <em>& cryptographer</em></p>
         </div>
-        <div class="navbar-menu" id="navMenu">
-          <div class="navbar-end">
-            <a class="navbar-item" href="index.html">About</a>
-            <a class="navbar-item" href="project.html">Projects</a>
-            <a class="navbar-item" href="resume.html" target="_blank"> Resume</a>
-          </div>
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-end">
+          <a class="navbar-item" href="index.html">About</a>
+          <a class="navbar-item" href="project.html">Projects</a>
+          <a class="navbar-item" href="resume.html" target="_blank"> Resume</a>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <div id="app">
-      <section class="section">
-        <div class="container">
-          <div class="columns is-variable is-8">
-            <div class="column is-one-third">
-              <img src="static/img/gopher.png" alt="gopher" />
-            </div>
-            <div class="column">
-              <h1 class="title">Bio</h1>
-              <p class="is-size-5">
-                I am a Golang developer with algebra background. I have a Master in Mathematics, Computer Science and Cryptology at Université de
-                Paris. Since my first professional experience, I have been in love with the Go langage, but I am also interested in cryptology and
-                data science. In my spare time I like writing orchestral cinematic music.
-              </p>
-              <br />
-              <div class="buttons">
-                <a href="https://github.com/kahlys" target="_blank" class="button is-medium">
-                  <span class="icon is-large">
-                    <i style="color: #161b22" class="fa-brands fa-github fa-xl"></i>
-                  </span>
-                  <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/youenn-laborde-152a0786/" target="_blank" class="button is-medium">
-                  <span class="icon is-large">
-                    <i style="color: #0a66c2" class="fa-brands fa-linkedin fa-xl"></i>
-                  </span>
-                  <span>LinkedIn</span>
-                </a>
-                <a href="https://soundcloud.com/kahlys" target="_blank" class="button is-medium">
-                  <span class="icon is-large">
-                    <i style="color: #f50" class="fa-brands fa-soundcloud fa-xl"></i>
-                  </span>
-                  <span>SoundCloud</span>
-                </a>
-              </div>
-            </div>
+  <div id="app">
+    <section class="section">
+      <div class="container">
+        <div class="columns is-variable is-8">
+          <div class="column is-one-third">
+            <img src="static/img/gopher.png" alt="gopher" />
           </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <h1 class="title">Music</h1>
-
-          <p><em>Some music I have composed...</em></p>
-
-          <div class="columns is-multiline mt-1">
-            <div v-for="m in music" class="column is-one-third">
-              <figure class="image is-16by9">
-                <iframe class="has-ratio" width="100%" height="auto" v-bind:src="m.src" allowfullscreen></iframe>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <h1 class="title">Recommendations</h1>
-
-          <h2 class="is-size-4">My favorite music albums</h2>
-          <div class="columns is-multiline mt-1">
-            <div v-for="album in reco.music" class="column is-one-quarter">
-              <a v-bind:href="album.link" target="_blank">
-                <img class="img-link" v-bind:src="album.img" alt="" />
+          <div class="column">
+            <h1 class="title">Bio</h1>
+            <p class="is-size-5">
+              I am a Golang developer with algebra background. I have a Master in Mathematics, Computer Science and
+              Cryptology at Université de
+              Paris. Since my first professional experience, I have been in love with the Go langage, but I am also
+              interested in cryptology and
+              data science. In my spare time I like writing orchestral cinematic music.
+            </p>
+            <br />
+            <div class="buttons">
+              <a href="https://github.com/kahlys" target="_blank" class="button is-medium">
+                <span class="icon is-large">
+                  <i style="color: #161b22" class="fa-brands fa-github fa-xl"></i>
+                </span>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/youenn-laborde-152a0786/" target="_blank" class="button is-medium">
+                <span class="icon is-large">
+                  <i style="color: #0a66c2" class="fa-brands fa-linkedin fa-xl"></i>
+                </span>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://soundcloud.com/kahlys" target="_blank" class="button is-medium">
+                <span class="icon is-large">
+                  <i style="color: #f50" class="fa-brands fa-soundcloud fa-xl"></i>
+                </span>
+                <span>SoundCloud</span>
               </a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <h2 class="is-size-4">My favorite movies</h2>
-          <div class="columns is-multiline mt-1">
-            <div v-for="movie in reco.movie" class="column is-one-quarter">
-              <a v-bind:href="movie.link" target="_blank"> <img class="img-link" v-bind:src="movie.img" alt="" /></a>
-            </div>
-          </div>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Music</h1>
 
-          <h2 class="is-size-4">My favorite tv shows</h2>
-          <div class="columns is-multiline mt-1">
-            <div v-for="show in reco.tv" class="column is-one-quarter">
-              <a v-bind:href="show.link" target="_blank"> <img class="img-link" v-bind:src="show.img" alt="" /></a>
-            </div>
+        <p><em>Some music I have composed...</em></p>
+
+        <div class="columns is-multiline mt-1">
+          <div v-for="m in music" class="column is-one-third">
+            <figure class="image is-16by9">
+              <iframe class="has-ratio" width="100%" height="auto" v-bind:src="m.src" allowfullscreen></iframe>
+            </figure>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"), 0);
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Recommendations</h1>
 
-        if ($navbarBurgers.length > 0) {
-          $navbarBurgers.forEach((el) => {
-            el.addEventListener("click", () => {
-              const target = el.dataset.target;
-              const $target = document.getElementById(target);
-              el.classList.toggle("is-active");
-              $target.classList.toggle("is-active");
-            });
+        <h2 class="is-size-4">My favorite music albums</h2>
+        <div class="columns is-multiline mt-1">
+          <div v-for="album in reco.music" class="column is-one-quarter">
+            <a v-bind:href="album.link" target="_blank">
+              <img class="img-link" v-bind:src="album.img" alt="" />
+            </a>
+          </div>
+        </div>
+
+        <h2 class="is-size-4">My favorite movies</h2>
+        <div class="columns is-multiline mt-1">
+          <div v-for="movie in reco.movie" class="column is-one-quarter">
+            <a v-bind:href="movie.link" target="_blank"> <img class="img-link" v-bind:src="movie.img" alt="" /></a>
+          </div>
+        </div>
+
+        <h2 class="is-size-4">My favorite tv shows</h2>
+        <div class="columns is-multiline mt-1">
+          <div v-for="show in reco.tv" class="column is-one-quarter">
+            <a v-bind:href="show.link" target="_blank"> <img class="img-link" v-bind:src="show.img" alt="" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"), 0);
+
+      if ($navbarBurgers.length > 0) {
+        $navbarBurgers.forEach((el) => {
+          el.addEventListener("click", () => {
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+            el.classList.toggle("is-active");
+            $target.classList.toggle("is-active");
           });
-        }
-      });
-    </script>
+        });
+      }
+    });
+  </script>
 
-    <script>
-      var app = new Vue({
-        el: "#app",
-        data: {
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        music: [
+          { src: "https://youtube.com/embed/LEbtlhpPrKc" },
+          { src: "https://youtube.com/embed/V0cKVlCKARU" },
+          { src: "https://youtube.com/embed/k3vKDIJkVi8" },
+        ],
+        reco: {
           music: [
-            { src: "https://youtube.com/embed/LEbtlhpPrKc" },
-            { src: "https://youtube.com/embed/V0cKVlCKARU" },
-            { src: "https://youtube.com/embed/k3vKDIJkVi8" },
+            { img: "/static/img/album_good.webp", link: "https://songwhip.com/rodolphe-burger/good-alive" },
+            { img: "/static/img/album_tempete.webp", link: "https://songwhip.com/coeur-de-pirate/en-cas-de-tempete-ce-jardin-sera-ferme" },
+            { img: "/static/img/album_ram.webp", link: "https://songwhip.com/daft-punk/random-access-memories" },
+            { img: "/static/img/album_stup.webp", link: "https://songwhip.com/stupeflip/stup-virus-2017" },
           ],
-          reco: {
-            music: [
-              { img: "/static/img/album_good.webp", link: "https://songwhip.com/rodolphe-burger/good-alive" },
-              { img: "/static/img/album_tempete.webp", link: "https://songwhip.com/coeur-de-pirate/en-cas-de-tempete-ce-jardin-sera-ferme" },
-              { img: "/static/img/album_ram.webp", link: "https://songwhip.com/daft-punk/random-access-memories" },
-              { img: "/static/img/album_stup.webp", link: "https://songwhip.com/stupeflip/stup-virus-2017" },
-            ],
-            movie: [
-              { img: "/static/img/movie_batman.jpeg", link: "https://www.themoviedb.org/movie/414906-the-batman" },
-              { img: "/static/img/movie_parasite.jpeg", link: "https://www.themoviedb.org/movie/496243" },
-              { img: "/static/img/movie_silence.jpeg", link: "https://www.themoviedb.org/movie/68730-silence" },
-              { img: "/static/img/movie_torino.jpeg", link: "https://www.themoviedb.org/movie/13223-gran-torino" },
-            ],
-            tv: [
-              { img: "/static/img/tv_westworld.jpeg", link: "https://www.themoviedb.org/tv/63247-westworld" },
-              { img: "/static/img/tv_lbdl.jpeg", link: "https://www.themoviedb.org/tv/62476-le-bureau-des-l-gendes" },
-              { img: "/static/img/tv_sherlock.jpeg", link: "https://www.themoviedb.org/tv/19885-sherlock" },
-              { img: "/static/img/tv_prisonnier.jpeg", link: "https://www.themoviedb.org/tv/894-the-prisoner" },
-            ],
-          },
+          movie: [
+            { img: "/static/img/movie_batman.jpeg", link: "https://www.themoviedb.org/movie/414906-the-batman" },
+            { img: "/static/img/movie_parasite.jpeg", link: "https://www.themoviedb.org/movie/496243" },
+            { img: "/static/img/movie_silence.jpeg", link: "https://www.themoviedb.org/movie/68730-silence" },
+            { img: "/static/img/movie_torino.jpeg", link: "https://www.themoviedb.org/movie/13223-gran-torino" },
+          ],
+          tv: [
+            { img: "/static/img/tv_westworld.jpeg", link: "https://www.themoviedb.org/tv/63247-westworld" },
+            { img: "/static/img/tv_lbdl.jpeg", link: "https://www.themoviedb.org/tv/62476-le-bureau-des-l-gendes" },
+            { img: "/static/img/tv_sherlock.jpeg", link: "https://www.themoviedb.org/tv/19885-sherlock" },
+            { img: "/static/img/tv_prisonnier.jpeg", link: "https://www.themoviedb.org/tv/894-the-prisoner" },
+          ],
         },
-      });
-    </script>
-  </body>
+      },
+    });
+  </script>
+</body>
+
 </html>
